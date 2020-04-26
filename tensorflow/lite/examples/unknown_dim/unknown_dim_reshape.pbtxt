@@ -1,0 +1,56 @@
+node {
+  name: "Placeholder"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value { type: DT_FLOAT }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim { size: -1 }
+        dim { size: -1 }
+      }
+    }
+  }
+}
+node {
+  name: "Placeholder_1"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value { type: DT_INT32 }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim { size: 2 }
+      }
+    }
+  }
+}
+node {
+  name: "Reshape"
+  op: "Reshape"
+  input: "Placeholder"
+  input: "Placeholder_1"
+  attr {
+    key: "T"
+    value { type: DT_FLOAT }
+  }
+  attr {
+    key: "Tshape"
+    value { type: DT_INT32 }
+  }
+}
+node {
+  name: "Relu"
+  op: "Relu"
+  input: "Reshape"
+  attr {
+    key: "T"
+    value { type: DT_FLOAT }
+  }
+}
